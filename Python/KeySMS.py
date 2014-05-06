@@ -1,6 +1,7 @@
 
 # KeySMS API client.
 from json import JSONEncoder
+from urllib import urlencode
 
 __author__ = 'Torvald Baade Bringsvor <bringsvor@bringsvor.com>'
 
@@ -60,6 +61,10 @@ class KeySMS(object):
             'time' : time }
         )
         # urllib.urlencode
+        signature = ''
+        username = ''
+        url = inputUrl + '?' + urlencode( [('payload', jsonPayload), ('signature', signature), ('username', username)])
+        print "URL", url
         # https://docs.python.org/2/library/urllib.html?highlight=urlencode#urllib.urlopen
 
         """
